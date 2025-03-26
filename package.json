@@ -1,0 +1,26 @@
+{
+  "name": "eventos-backend",
+  "version": "1.0.0",
+  "description": "La Fiesta de las Hamburguesas es una aplicación para crear eventos donde los usuarios pueden organizar y unirse a eventos. En cada evento creado, los usuarios pueden indicar qué llevarán al evento.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranckHeCai/eventos-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FranckHeCai/eventos-backend/issues"
+  },
+  "homepage": "https://github.com/FranckHeCai/eventos-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  },
+  "type": "module"
+}
