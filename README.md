@@ -1,52 +1,56 @@
-# La Fiesta de las Hamburguesas
+1. Crearemos el fichero .env a partir del fichero .env.example
+2. En el fichero /entitis/user/adapters/http/index.js pondremos las rutas a las que accederemos. Tienes ejemplos de muchas peticiones en /entities/user/index.js
 
-## Descripción
+## HTTP SAMPLES
 
-La Fiesta de las Hamburguesas es una aplicación para crear eventos donde los usuarios pueden organizar y unirse a eventos. En cada evento creado, los usuarios pueden indicar qué llevarán al evento.
+```js
+// GET BY ID
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const {
+      query: { id },
+    } = req;
+    const data = await Controller.getById(id);
+    res.send(data);
+  })
+);
 
-## Funcionalidades
+// CREATE
+router.post(
+  "/",
+  asyncHandler(async (req, res) => {
+    const {
+      body: { email, username, password },
+    } = req;
+    await Controller.create({ email, username, password });
+    res.send("Usuario creado con éxito");
+  })
+);
 
-- **Crear eventos**: Los usuarios pueden crear nuevos eventos.
-- **Unirse a eventos**: Los usuarios pueden unirse a eventos existentes.
-- **Asignar responsabilidades**: Los usuarios pueden indicar qué llevarán al evento.
+// DELETE
+router.delete(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const {
+      params: { id },
+    } = req;
+    await Controller.deleteById(id);
+    res.send(`User id: ${id} deleted`);
+  })
+);
 
-## Tecnologías Utilizadas
+// TOTAL UPDATE
+router.put("/:id", async (req, res) => {
+  const {
+    params: { id },
+    body,
+  } = req;
+  await Controller.updateById(id, body);
+  res.send(`User id: ${id} updated`);
+});
+```
 
-- **Backend**: Node.js, Express
-- **Base de Datos**: MongoDB
-- **Autenticación**: JWT (JSON Web Tokens)
+## DOCUMENTATION
 
-## Instalación
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/tu-usuario/eventos-backend.git
-   ```
-2. Navega al directorio del proyecto:
-   ```bash
-   cd eventos-backend
-   ```
-3. Instala las dependencias:
-   ```bash
-   npm install
-   ```
-4. Configura las variables de entorno en un archivo `.env`.
-
-5. Inicia el servidor:
-   ```bash
-   npm start
-   ```
-
-## Uso
-
-1. Regístrate o inicia sesión en la aplicación.
-2. Crea un nuevo evento o únete a uno existente.
-3. Indica qué llevarás al evento.
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request.
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT.
+http://localhost:3000/docs/

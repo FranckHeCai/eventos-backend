@@ -1,26 +1,34 @@
 {
-  "name": "eventos-backend",
+  "name": "server",
   "version": "1.0.0",
-  "description": "La Fiesta de las Hamburguesas es una aplicación para crear eventos donde los usuarios pueden organizar y unirse a eventos. En cada evento creado, los usuarios pueden indicar qué llevarán al evento.",
-  "main": "index.js",
+  "description": "Node example",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./index.js"
+    "dev": "nodemon --signal SIGKILL",
+    "start": "ts-node -r tsconfig-paths/register src/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FranckHeCai/eventos-backend.git"
-  },
-  "author": "",
+  "author": "Pablo Monteserín",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FranckHeCai/eventos-backend/issues"
-  },
-  "homepage": "https://github.com/FranckHeCai/eventos-backend#readme",
   "dependencies": {
+    "auth0": "^4.20.0",
+    "body-parser": "^1.20.3",
     "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "nodemon": "^3.1.9"
+    "dotenv": "^16.4.7",
+    "express": "4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "3.2.0",
+    "kill-port": "^2.0.1",
+    "mysql2": "^3.14.0",
+    "nodemon": "^3.1.9",
+    "sequelize": "^6.37.6",
+    "socket.io": "^4.8.1",
+    "wait-port": "^1.1.0"
   },
-  "type": "module"
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.8.2"
+  }
 }
