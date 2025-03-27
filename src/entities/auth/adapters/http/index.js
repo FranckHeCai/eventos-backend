@@ -12,7 +12,7 @@ router.post(
   asyncHandler(async (req, res) => {
     const data = await Controller.login(req.body.token);
     console.log(data);
-    res.send(data);
+    res.send("usuario existe");
   })
 );
 

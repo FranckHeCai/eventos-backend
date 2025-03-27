@@ -1,10 +1,10 @@
 import userRoutes from "./user/adapters/http";
 // import userSockets from './user/adapters/socket';
-// import authRoutes from "./auth/adapters/http";
+import authRoutes from "./auth/adapters/http";
 
 export const Routes = (app) => {
   userRoutes(app, "/user");
-  // authRoutes(app);
+  authRoutes(app);
 };
 
 export const Sockets = (io, socket) => {
