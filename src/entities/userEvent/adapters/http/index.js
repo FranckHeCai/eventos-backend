@@ -50,41 +50,4 @@ router.post(
   })
 );
 
-router.get(
-  "/participants/:eventId",
-  asyncHandler(async (req, res) => {
-    const {
-      body: {eventId}
-    } = req.params
-
-    try {
-      const participants = await Controller.get({
-        where: {eventId},
-        include: ["users"]
-      });
-
-      res.status(201).json(participants)
-    } catch (error) {
-      res.status(401).send("Error agregando participante")
-    }
-  })
-);
-
-router.get(
-  "/events/:userId",
-  async (req, res) => {
-    const { userId } = req.params;
-
-    try {
-      const events = await Controller.get({
-        where: { userId },
-        include: ["events"], // Include event details
-      });
-      res.status(200).json(events);
-    } catch (error) {
-      res.status(500).send("Error fetching events.");
-    }
-  }
-);
-
 export default (app, entityUrl) => app.use(entityUrl, router);

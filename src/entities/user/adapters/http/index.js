@@ -3,6 +3,7 @@ import Controller from "../../controller";
 import { asyncHandler } from "@Application/middlewares/error-handler";
 // Para operaciones con acceso restringido, introduciremos un segundo parámetro que será la variable restrictedAccess
 import restrictedAccess from "@Application/middlewares/restricted-access";
+import {where} from 'sequelize';
 
 const router = express.Router();
 
@@ -13,6 +14,21 @@ const router = express.Router();
 //     res.send("Llegamos a user");
 //   })
 // );
+router.get(
+  "/events/:userId",
+  async (req, res) => {
+    const { 
+      params : {userId}
+     } = req;
+
+    try {
+      const events = await Controller.getEvents(userId)
+      res.status(200).json(events);
+    } catch (error) {
+      res.status(500).send("Error fetching events.");
+    }
+  }
+);
 
 router.delete("/",
   asyncHandler(async (req,res) => {
