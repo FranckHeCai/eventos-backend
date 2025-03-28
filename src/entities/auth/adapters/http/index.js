@@ -12,10 +12,7 @@ router.post(
   "/login",
   asyncHandler(async (req, res) => {
     console.log("Autenticando")
-
     const authHeader = req.headers.authorization;
-    console.log(authHeader)
-
     if (!authHeader) {
       return res.status(401).json({
         status: 401,
@@ -23,7 +20,7 @@ router.post(
       });
     }
 
-    // Obtener el token eliminando el prefijo "Bearer "
+    // Obtener el token eliminando el prefijo de la cabecera
     const token = authHeader.split(" ")[1];
 
     console.log("Este es el token del usuario:", token)
