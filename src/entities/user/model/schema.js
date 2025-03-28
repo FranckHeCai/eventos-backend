@@ -5,4 +5,7 @@ export default db.define("user", {
   email: DataTypes.STRING,
   auth0Id: DataTypes.STRING,
   password: DataTypes.STRING
-});
+},
+{
+    freezeTableName: true, // Esto desactiva la pluralización automática
+  });
