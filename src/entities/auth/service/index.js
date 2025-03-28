@@ -17,7 +17,7 @@ const AuthService = () => ({
     const { username, password } = credentials;
 
     const users = await UserModel.get({ username, password });
-    console.log("Usuarios consultados: ",users)
+    console.log("Usuarios consultados: ", users)
     if (users.length === 0) {
       return errorMessage;
     }
