@@ -15,6 +15,9 @@ const Controller = {
   },
   deleteById(id) {
     return Model.deleteById(id);
+  },
+  getParticipants(eventId) {
+    return Model.get({eventId})
   }
 }
 
