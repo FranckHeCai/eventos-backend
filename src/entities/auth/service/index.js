@@ -2,18 +2,26 @@ import UserModel from "../../user/model";
 
 const AuthService = () => ({
   async signIn(token) {
+    const errorMessage = {
+    status: 401,
+    error: "The username or password are not correct",
+    };
     const credentials = decodeBase64Token(token);
     if (!credentials || !credentials.username || !credentials.password) {
-      return {error: 'bura bura'}
+      return {
+        status: 401,
+        error: "Username or Password not provided"
+      }
     }
 
     const { username, password } = credentials;
 
     const users = await UserModel.get({ username, password });
-
+    console.log("Usuarios consultados: ", users)
     if (users.length === 0) {
-      return res.status(401).json({ error: "Credenciais inválidas" });
+      return errorMessage;
     }
+    return { status: 200, message: "Authentication successful", user: users[0] };
   },
 
   deleteUser(userProviderId) {
@@ -21,7 +29,7 @@ const AuthService = () => ({
   },
 });
 
-const decodeBase64Token = (token) => {
+export const decodeBase64Token = (token) => {
   try {
     const decoded = Buffer.from(token, "base64").toString("utf-8");
     const [username, password] = decoded.split(":");

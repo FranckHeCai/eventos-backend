@@ -25,11 +25,30 @@ router.get(
 router.post(
   "/",
   asyncHandler(async (req, res) => {
+    const { id } = req.body;
+    const data = await Controller.getById(id);
+    res.send(data);
+  })
+);
+
+router.post(
+  "/",
+  asyncHandler(async (req, res) => {
     const {
       body: { name, description, place, date },
     } = req;
     await Controller.create({ name, description, place, date });
     res.send("Evento creado con éxito!!");
+  })
+);
+
+router.delete(
+  "/",
+  asyncHandler(async (req, res) => {
+    const { id } = req.body;
+    console.log(id)
+    const data = await Controller.deleteById(id);
+    res.send("Evento Eliminado Correctamente")
   })
 );
 

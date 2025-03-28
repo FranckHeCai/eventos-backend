@@ -14,6 +14,22 @@ const router = express.Router();
 //   })
 // );
 
+router.delete("/",
+  asyncHandler(async (req,res) => {
+    const {id} = req.body
+    await Controller.deleteById(id)
+    res.send("Usuario borrado correctamente")
+  })
+)
+
+router.put("/", 
+  asyncHandler(async (req, res) => {
+    const {id, username} = req.body
+    await Controller.updateById(id, {username})
+    res.send("usuario actualizado")
+  })
+)
+
 router.get(
   "/",
   asyncHandler(async (req, res) => {
