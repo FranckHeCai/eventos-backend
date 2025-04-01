@@ -4,7 +4,7 @@ const GenericModel = Model => ({
         return Model.create(data);
     },
     get(conditions) {
-        return Model.findAll(conditions ? {where:conditions} : {});
+        return Model.findAll(conditions ? { where: conditions } : {});
     },
     getById(id) {
         return Model.findOne({ where: { id } });
@@ -15,9 +15,10 @@ const GenericModel = Model => ({
     deleteById(id) {
         return Model.destroy({ where: { id } });
     },
-    findOrCreate(condition, newObj){
-        return Model.findOrCreate({where:condition, defaults: newObj});
+    findOrCreate(condition, newObj) {
+        return Model.findOrCreate({ where: condition, defaults: newObj });
     }
+
 });
 
 export default GenericModel;
