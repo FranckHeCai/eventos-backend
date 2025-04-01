@@ -15,15 +15,15 @@ const router = express.Router();
 //   })
 // );
 router.get(
-  "/events/:userId",
+  "/:ingredientId",
   async (req, res) => {
     const { 
-      params : {userId}
+      params : {ingredientId}
      } = req;
 
     try {
-      const events = await Controller.getEvents(userId)
-      res.status(200).json(events);
+      const ingredient = await Controller.getById(ingredientId)
+      res.status(200).json(ingredient);
     } catch (error) {
       res.status(500).send("Error fetching events.");
     }
@@ -34,15 +34,7 @@ router.delete("/",
   asyncHandler(async (req,res) => {
     const {id} = req.body
     await Controller.deleteById(id)
-    res.send("Usuario borrado correctamente")
-  })
-)
-
-router.put("/", 
-  asyncHandler(async (req, res) => {
-    const {id, username} = req.body
-    await Controller.updateById(id, {username})
-    res.send("usuario actualizado")
+    res.send("Ingrediente borrado correctamente")
   })
 )
 
@@ -58,10 +50,10 @@ router.post(
   "/",
   asyncHandler(async (req, res) => {
     const {
-      body: { email, username, password },
+      body: { name },
     } = req;
-    await Controller.create({ email, username, password });
-    res.send("Usuario creado con éxito!!");
+    await Controller.create({ name });
+    res.send("Ingrediente registrado con éxito!!");
   })
 );
 
