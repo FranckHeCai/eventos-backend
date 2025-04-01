@@ -1,13 +1,14 @@
 import { db, DataTypes } from "@Application/database";
 
-export default db.define("users", 
+export default db.define("ingredients",
   {
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   // {
-  //     freezeTableName: true, // Esto desactiva la pluralización automática
+  //   freezeTableName: true, // Prevent Sequelize from pluralizing the table name
   // }
 );
 

@@ -12,6 +12,14 @@ const GenericModel = Model => ({
     updateById(id, data) {
         return Model.update(data, { where: { id } });
     },
+    updateIngredientById(ingredientId, eventId, data) {
+        return Model.update(data, {
+            where: {
+            ingredientId: ingredientId,
+            eventId: eventId
+            }
+        })
+    },
     deleteById(id) {
         return Model.destroy({ where: { id } });
     },

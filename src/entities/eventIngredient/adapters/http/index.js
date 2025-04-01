@@ -27,25 +27,36 @@ router.post(
   "/",
   asyncHandler(async (req, res) => {
     const {
-      body: { userId, eventId },
+      body: { ingredientId, eventId, quantity },
     } = req;
-    await Controller.create({ userId, eventId });
-    res.send(`${userId} se ha apuntado al evento: ${eventId}`);
+    await Controller.create({ ingredientId, eventId, quantity });
+    res.send(`el ingrediente con id ${ingredientId} se ha apuntado al evento: ${eventId}`);
+  })
+);
+
+router.put(
+  "/updateIngredient",
+  asyncHandler(async (req, res) => {
+    const {
+      body: { ingredientId, eventId, quantity },
+    } = req;
+    await Controller.updateByIngredientId(ingredientId, eventId, {ingredientId, eventId, quantity});
+    res.send(`el ingrediente con id ${ingredientId} se ha actualizado correctamente`);
   })
 );
 
 router.post(
-  "/addParticipant",
+  "/addIngredient",
   asyncHandler(async (req, res) => {
     const {
-      body: {userId, eventId}
+      body: {ingredientId, eventId}
     } = req
 
     try {
-      await Controller.create({ userId, eventId });
-      res.status(201).send("Participante agregado con éxito!!")
+      await Controller.create({ ingredientId, eventId });
+      res.status(201).send("Ingrediente agregado con éxito!!")
     } catch (error) {
-      res.status(401).send("Error agregando participante")
+      res.status(401).send("Error agregando ingrediente")
     }
   })
 );
