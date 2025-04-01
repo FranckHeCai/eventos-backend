@@ -3,6 +3,7 @@ import Controller from "../../controller";
 import { asyncHandler } from "@Application/middlewares/error-handler";
 // Para operaciones con acceso restringido, introduciremos un segundo parámetro que será la variable restrictedAccess
 import restrictedAccess from "@Application/middlewares/restricted-access";
+import {where} from 'sequelize';
 
 const router = express.Router();
 
@@ -42,6 +43,7 @@ router.post(
   })
 );
 
+<<<<<<< HEAD
 router.delete(
   "/",
   asyncHandler(async (req, res) => {
@@ -52,4 +54,25 @@ router.delete(
   })
 );
 
+=======
+router.get(
+  "/participants/:eventId",
+  asyncHandler(async (req, res) => {
+    const {
+      params: {eventId}
+    } = req
+
+    try {
+      const participants = await Controller.getParticipants(eventId)
+
+      res.status(201).json(participants)
+    } catch (error) {
+      res.status(401).send("Error getting the participants")
+    }
+  })
+);
+
+
+
+>>>>>>> main
 export default (app, entityUrl) => app.use(entityUrl, router);
