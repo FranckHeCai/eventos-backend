@@ -21,6 +21,7 @@ router.post(
     }
 
     // Obtener el token eliminando el prefijo de la cabecera
+
     const token = authHeader.split(" ")[1];
 
     console.log("Este es el token del usuario:", token)
