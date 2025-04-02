@@ -58,11 +58,11 @@ router.get(
     } = req
 
     try {
-      const participants = await Controller.getIngredients(eventId)
+      const ingredients = await Controller.getIngredients(eventId)
 
-      res.status(201).json(participants)
+      res.status(201).json(ingredients)
     } catch (error) {
-      res.status(401).send("Error getting the participants")
+      res.status(401).send("Error getting the ingredients")
     }
   })
 );
