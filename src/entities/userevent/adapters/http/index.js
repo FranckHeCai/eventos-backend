@@ -38,7 +38,7 @@ router.post(
   "/addParticipant",
   asyncHandler(async (req, res) => {
     const {
-      body: { userId, eventId }
+      body: {userId, eventId}
     } = req
 
     try {
