@@ -13,6 +13,9 @@ const Controller = {
   updateById(id, data) {
     return Model.updateById(id, data);
   },
+  updateByIngredientId (ingredientId, eventId, data){
+    return Model.updateIngredientById(ingredientId, eventId, data)
+  },
   deleteById(id) {
     return Model.deleteById(id);
   }
