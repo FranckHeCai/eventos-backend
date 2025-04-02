@@ -63,7 +63,7 @@ router.post(
     const newUser = await Controller.create({ email, username, password });
     res.send("Usuario creado con éxito!!");
     res.status(201).json({
-        message: "Usuario creado con éxito!!",
+        message: "Usuario creado con éxito!!",  
         user: {
           id: newUser.id,
           email: newUser.email,

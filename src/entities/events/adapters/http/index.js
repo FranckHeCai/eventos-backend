@@ -71,6 +71,22 @@ router.get(
     }
   })
 );
+router.get(
+  "/:eventId/ingredients",
+  asyncHandler(async (req, res) => {
+    const {
+      params: {eventId}
+    } = req
+
+    try {
+      const participants = await Controller.getIngredients(eventId)
+
+      res.status(201).json(participants)
+    } catch (error) {
+      res.status(401).send("Error getting the participants")
+    }
+  })
+);
 
 
 

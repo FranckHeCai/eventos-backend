@@ -16,9 +16,6 @@ const Controller = {
   deleteById(id) {
     return Model.deleteById(id);
   },
-  getEvents(eventId) {
-    return Model.getEvents(eventId)
-  }
 }
 
 export default Controller;

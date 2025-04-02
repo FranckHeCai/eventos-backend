@@ -18,6 +18,9 @@ const Controller = {
   },
   getParticipants(eventId) {
     return Model.getParticipants(eventId);
+  },
+  getIngredients(evenId) {
+    return Model.getIngredients(evenId)
   }
 }
 
